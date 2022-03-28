@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Document</title>
+    <script>
+        function quest0() {
+            var input = prompt("초 단위 시간을 입력하세요");
+            num = Number(input)
+            min = parseInt(num/60)
+            sec = (num - min*60)
+            console.log(min+'분'+sec+'초입니다.')
+           
+        }
+
+        function quest1() {
+            pointx1 = parseInt(prompt("첫 번째 점의 x좌표를 입력하세요"));
+            pointy1 = parseInt(prompt("첫 번째 점의 y좌표를 입력하세요"));
+            pointx2 = parseInt(prompt("두 번째 점의 x좌표를 입력하세요"));
+            pointy2 = parseInt(prompt("두 번째 점의 y좌표를 입력하세요"));
+            
+            var point  = {
+                x_1 : pointx1,
+                y_1 : pointy1,
+                x_2 : pointx2,
+                y_2 : pointy2
+            }
+            
+
+            let distance = getDist(point); 
+            console.log(distance);
+
+        }
+
+        function getDist(point) {
+
+            var point  = {
+                x_1 : pointx1,
+                y_1 : pointy1,
+                x_2 : pointx2,
+                y_2 : pointy2
+            }
+             
+            return Math.sqrt((point.x_1-point.x_2)**2+(point.y_1-point.y_2)**2)
+        }
+
+        function quest2(str) {  
+            console.log(str.toUpperCase())
+        }
+
+        function quest3() {
+            num1 = parseInt(prompt("첫 번째 숫자를 입력하세요"));
+            oper = prompt("연산자를 입력하세요");
+            num2 = parseInt(prompt("두 번째 숫자를 입력하세요"));
+
+            var answer = operate(num1, oper, num2);
+            console.log("정답은 %d입니다.", answer);
+        }
+
+        function operate(num1, oper, num2) { 
+            switch(oper){
+                case '+':
+                    return (num1 + num2);
+                    break;
+                case '-':
+                    return (num1 - num2)
+                    break;
+                case '/':
+                    return (num1/num2)
+                    break;
+                case '*':
+                    return (num1*num2)
+            }
+            
+        }
+
+        function quest4() {
+            user = prompt("가위 바위 보!")
+            var scp = ["가위", "바위", "보"]
+
+            rand = Math.floor(Math.random()*3)
+            com = scp[rand]
+            console.log("컴퓨터: "+ com)
+            if (user == scp[rand]) {
+                console.log("비겼음!")             
+            }
+
+            else if ((user == "가위" & com == "보")||(user == "바위" & com == "가위")||(user == "보" & com == "바위")){
+                console.log("사용자 승리!")
+            } 
+            
+            else{
+                console.log("컴퓨터 승리")
+            }
+        }
+
+        function quest5() {
+            str = prompt('문자열을 입력하세요') // 반드시 이 코드를 사용하세요
+            console.log(myReverse(str));
+        }
+
+        function myReverse(str) {
+            
+            rev = ''
+                for (let j = str.length-1; j >=0; j-- ){
+                rev = rev + str[j]
+                    }
+
+            return rev
+
+        }
+
+        function quest6() {
+            do{input = parseInt(prompt('숫자를 입력하세요'))
+                if (input == 0 || input % 2 == 0){
+                }
+                else if(input % 2 == 1){
+                    console.log(input + "를 입력하셨네요")
+                    // var input  = parseInt(prompt('숫자를 입력하세요'))
+                }
+            }while (input>=0) 
+            console.log("끝!")
+            }
+
+        function quest7(){
+          
+            input = prompt("문자열을 입력해주세요.") 
+            console.log(myReverse(input))
+
+            function myReverse(input) {
+            
+            var arr = input.split(' ')
+            new_arr = []
+            result =''
+            
+            for (let i = 0; i < arr.length ;i++){
+                result = result + arr[i][0]
+                            
+                }
+            
+            return result.toUpperCase()
+            }
+        }
+        
+        let testStr = 'My name is mymy. Your name is youryour. His name is hishis. Her name is herher. So, my, your, his, her, name will be mymyyouryourhishisherehr.';
+        // 위 변수를 이용하여 quest8()함수를 실행하세요
+
+        function quest8(str){    
+            const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/gi
+            const result = str.replace(regex, '') 
+            const arr  = result.split(" ")
+            const set = new Set(arr)
+            const new_arr = Array.from(set)
+            var a = new_arr.sort()
+
+            a.forEach(function(a){
+                console.log(a)
+            })            
+                        
+        }
+
+        let longStr = "Computer engineering has been rapidly changed than any other academic disciplines; these changes are immediately reflected in the industrial field.";
+        // 위 변수를 이용하여 quest9()함수를 실행하세요
+
+        function quest9(str){
+            const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/gi
+            const result = str.replace(regex, '') 
+            var str = result.split("")
+            
+            for (var i = 0; i <str.length; i++){
+                if (str[i] == " "){
+                    str.splice(i, 1)
+                    i--
+                }
+            }
+
+            var dict = {}
+
+            for (var i = 0; i < str.length; i++){
+                if (str[i] in dict) {
+                    dict[str[i]] = dict[str[i]]+ 1
+                }
+                else
+                    dict[str[i]] = 1 
+            }
+
+
+
+           for (v in dict) {
+               console.log(v+":"+dict[v])
+                          } 
+                        
+        }
+
+    </script>
+</head>
+
+<body></body>
+
+</html>
